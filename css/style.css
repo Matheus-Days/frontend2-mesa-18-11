@@ -1,0 +1,7 @@
+.card {
+  background-color: gainsboro;
+  border-radius: 1rem;
+  margin: 1rem;
+  width: 7.5rem;
+  height: 15rem;
+}
