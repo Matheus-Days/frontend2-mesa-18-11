@@ -1,7 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap");
+
+* {
+  font-family: "Shippori Antique", sans-serif;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .card {
   background-color: gainsboro;
   border-radius: 1rem;
   margin: 1rem;
-  width: 7.5rem;
-  height: 15rem;
+  width: 7rem;
+  height: 13rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.type {
+  font-size: 0.75rem;
+}
+
+.name {
+  margin-top: -0.5rem;
 }

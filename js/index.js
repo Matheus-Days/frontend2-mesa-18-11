@@ -6,7 +6,9 @@ const createPokecard = (pokemon) => {
   
     const name = document.createElement("h3");
     name.className = "name";
-    name.innerText = res.name;
+    let pokename = res.name[0].toUpperCase()+res.name.substring(1);
+    name.innerText = pokename;
+
   
     const index = document.createElement('div');
     index.className = "index";
@@ -14,14 +16,14 @@ const createPokecard = (pokemon) => {
   
     const type = document.createElement('div');
     type.className = "type";
-    type.innerText = res.types[0].type.name;
+    type.innerText = res.types[0].type.name.toUpperCase();
   
     const card = document.createElement('div');
     card.className = "card";
   
+    card.appendChild(index);
     card.appendChild(sprite);
     card.appendChild(name);
-    card.appendChild(index);
     card.appendChild(type);
   
     document.querySelector("main").appendChild(card);
