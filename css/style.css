@@ -6,7 +6,7 @@
 
 main {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .card {
@@ -21,10 +21,76 @@ main {
   align-items: center;
 }
 
-.type {
-  font-size: 0.75rem;
-}
-
 .name {
   margin-top: -0.5rem;
+}
+
+.type {
+  font-size: 0.75rem;
+  padding: 0.25rem;
+}
+
+.grass {
+  background-color: lawngreen;
+}
+
+.fire {
+  background-color: crimson;
+  color: white;
+}
+
+.water {
+  background-color: turquoise;
+}
+
+.bug {
+  background-color: yellowgreen;
+}
+
+.normal {
+  background-color: bisque;
+}
+
+.poison {
+  background-color: purple;
+  color: whitesmoke;
+}
+
+.electric {
+  background-color: yellow;
+}
+
+.ground {
+  background-color: burlywood;
+}
+
+.fairy {
+  background-color: pink;
+}
+
+.fighting {
+  background-color: saddlebrown;
+  color: whitesmoke;
+}
+
+.psychic {
+  background-color: purple;
+  color: whitesmoke;
+}
+
+.rock {
+  background-color: sandybrown;
+}
+
+.ghost {
+  background-color: rgb(97, 30, 221);
+}
+
+.dragon {
+  background-color: rgb(128, 81, 240);
+  color: whitesmoke;
+}
+
+.ice {
+  background-color: lightblue;
 }

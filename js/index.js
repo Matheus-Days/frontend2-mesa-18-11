@@ -1,25 +1,24 @@
-const createPokecard = (pokemon) => {
-  fetch(pokemon.url).then(res => res.json()).then(res => {
+const createPokecards = (pokemons = []) => {
+  
+  pokemons.forEach(pokemon => {
+    
+    const index = document.createElement('div');
+    index.className = "index";
+
     const sprite = document.createElement("img");
     sprite.className = "sprite";
-    sprite.setAttribute("src", res.sprites["front_default"]);
   
     const name = document.createElement("h3");
     name.className = "name";
-    let pokename = res.name[0].toUpperCase()+res.name.substring(1);
+    let pokename = pokemon.name[0].toUpperCase()+pokemon.name.substring(1);
     name.innerText = pokename;
 
-  
-    const index = document.createElement('div');
-    index.className = "index";
-    index.innerText = res.id;
-  
     const type = document.createElement('div');
     type.className = "type";
-    type.innerText = res.types[0].type.name.toUpperCase();
   
     const card = document.createElement('div');
     card.className = "card";
+    card.setAttribute("data-src", pokemon.url);
   
     card.appendChild(index);
     card.appendChild(sprite);
@@ -28,14 +27,41 @@ const createPokecard = (pokemon) => {
   
     document.querySelector("main").appendChild(card);
   })
+} 
+
+const generatePokedex = () => {
+  const pokeapi = "https://pokeapi.co/api/v2/pokemon?limit=151";
+  
+  fetch(pokeapi).then(res => res.json()).then(res => {
+    const pokemons = res.results;
+  
+    createPokecards(pokemons);
+  }).then(() => {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+      fillPokecard(card);
+    });
+  })
 }
 
-const pokeapi = "https://pokeapi.co/api/v2/pokemon?limit=151";
+generatePokedex();
 
-fetch(pokeapi).then(res => res.json()).then(res => {
-  const pokemons = res.results;
+const fillPokecard = (pokecard) => {
+  const url = pokecard.getAttribute('data-src');
 
-  pokemons.forEach(pokemon => {
-    createPokecard(pokemon);
-  });
-})
+  const index = pokecard.querySelector('.index');
+  const sprite = pokecard.querySelector('.sprite');
+  const type = pokecard.querySelector('.type');
+  
+  fetch(url).then(res => res.json()).then(res => {
+
+    index.innerText = res.id;
+    
+    sprite.setAttribute("src", res.sprites["front_default"]);
+  
+    const typeName = res.types[0].type.name;
+    type.innerText = typeName.toUpperCase();
+    type.classList.add(typeName);
+  })
+}
